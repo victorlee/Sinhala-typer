@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sinhalese typer</title>
+<meta charset="utf-8">
+
+    <script type="text/javascript">
+
+var conversion = {
+"k": "ක",
+"kh": "ඛ",
+"g": "ග",
+"gh": "ඝ",
+"ng": "ඞ",
+"xg": "ඟ",
+"c": "ච",
+"ch": "ඡ",
+"j": "ජ",
+"jh": "ඣ",
+"ny": "ඤ",
+"xj": "ඦ",
+"y": "ය",
+"sh": "ශ",
+"T": "ට",
+"Th": "ඨ",
+"D": "ඩ",
+"Dh": "ඪ",
+"N": "ණ",
+"xD": "ඬ",
+"r": "ර",
+"L": "ළ",
+"S": "ෂ",
+"t": "ත",
+"th": "ථ",
+"d": "ද",
+"dh": "ධ",
+"n": "න",
+"xd": "ඳ",
+"l": "ල",
+"s": "ස",
+"p": "ප",
+"ph": "ඵ",
+"b": "බ",
+"bh": "භ",
+"m": "ම",
+"xb": "ඹ",
+"v": "ව",
+"h": "හ",
+"f": "ෆ",
+"qa": "අ",
+"qaa": "ආ",
+"qw": "ඇ",
+"qww": "ඈ",
+"qi": "ඉ",
+"qii": "ඊ",
+"qu": "උ",
+"quu": "ඌ",
+"qR": "ඍ",
+"qRR": "ඎ",
+"qe": "එ",
+"qee": "ඒ",
+"qo": "ඔ",
+"qoo": "ඕ",
+"qai": "ඓ",
+"qau": "ඖ",
+"qz": "ඏ",
+"qzz": "ඐ",
+"a": "&#8203;",
+"aa": "ා",
+"w": "ැ",
+"ww": "ෑ",
+"i": "ි",
+"ii": "ී",
+"u": "ු",
+"uu": "ූ",
+"R": "ෘ",
+"RR": "ෲ",
+"e": "ෙ",
+"ee": "ේ",
+"o": "ො",
+"oo": "ෝ",
+"ai": "ෛ",
+"au": "ෞ",
+"z": "ෟ",
+"zz": "ෳ",
+"M": "ං",
+"H": "ඃ",
+"q": "්",
+"Z": "\u200d",
+"x": "/n̆-/",
+
+"Q": "[invalid]",
+"Y": "[invalid]",
+"P": "[invalid]",
+"K": "[invalid]",
+"C": "[invalid]",
+"V": "[invalid]",
+"B": "[invalid]",
+"W": "[invalid]",
+"E": "[invalid]",
+"U": "[invalid]",
+"I": "[invalid]",
+"O": "[invalid]",
+"A": "[invalid]",
+"F": "[invalid]",
+"G": "[invalid]",
+"J": "[invalid]",
+"X": "[invalid]",
+
+        };
+
+ var maxLength = Object.keys(conversion)
+    .reduce((a, b) => a.length > b.length ? a : b) // get the longest word
+    .length; // and it's length
+  
+  function convert (text) {
+    var converted = "";
+    var cur = 0;
+    while (cur < text.length) {
+      var testedPhoneme;
+      var symbol = undefined;
+      for (var length = maxLength; length > 0; length --) {
+        testedPhoneme = text.substr(cur, length);
+        if (conversion[testedPhoneme]) {
+          symbol = conversion[testedPhoneme];
+          break; // stop the loop
+        }
+      }
+      if (symbol) {
+        converted += symbol;
+        cur += testedPhoneme.length;
+      }
+      else {
+        converted += text[cur]
+        cur++;
+      }
+    }
+    return converted
+  }
+
+  function onInputTextChange(txt) {
+    var outputTextareaElem = document.getElementById("output_textarea");
+    var div = document.createElement("div");
+    var outputHtmlEntities = convert(txt);
+    div.innerHTML = outputHtmlEntities;
+    outputTextareaElem.value = div.innerText;
+  }
+
+
+        function select() {
+          const input = document.getElementById('input_textarea');
+          input.focus();
+          input.select();
+        }   
+        function copytext() {
+          var copyText = document.getElementById("output_textarea");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+
+    </script>
+    
+<style>
+@import url(https://victorlee.github.io/fonts/stylesheet.css);
+table {
+  border-collapse: collapse;
+  width: 70%;
+}
+td, th {
+  border: 1px solid #AAA;
+  text-align: center;
+  padding: 1px;
+}
+textarea {
+	font-size: 13pt;
+    width: 96%;
+} 
+.note {
+  border: 1px solid #DDD;
+  width: 10%;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+</style>
+
+
+</head>
+<body>  
+
+<body>  
+
+<center><h1 class="text-center">Sinhalese typer</h1>
+</center>
+ 
+<center>
+<table>
+<thead>
+<tr>
+<th>	
+<button onclick="select('input_textarea')">Select all</button>
+<button onclick="document.getElementById('input_textarea').value = ''">Clear</button>
+</th>
+<th>
+<button onclick="copytext()">Copy text</button>
+</th>
+<th>Conversion table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<textarea
+id="input_textarea"
+autofocus=""
+placeholder="Input text here"
+rows="10"
+oninput="onInputTextChange(this.value)" style="font-family: Arial;"></textarea>    
+</td>
+<td>
+<textarea rows="7" placeholder="output. font: BhashitaComplex" id="output_textarea" style="font-family: 'BhashitaComplex'; font-size: 24px;"></textarea>    
+</td>
+<td>
+<center>
+<div style="overflow-y: scroll; height:230px; width:200px; font-size: 19px;">
+
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Sinhalese</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><code>qa</code> > අ<br><code>qaa</code> > ආ<br><code>aa</code> > ා</td>
+</tr>
+<tr>
+<td>k</td>
+<td>ක</td>
+</tr>
+<tr>
+<td>kh</td>
+<td>ඛ</td>
+</tr>
+<tr>
+<td>g</td>
+<td>ග</td>
+</tr>
+<tr>
+<td>gh</td>
+<td>ඝ</td>
+</tr>
+<tr>
+<td>ng</td>
+<td>ඞ</td>
+</tr>
+<tr>
+<td>xg</td>
+<td>ඟ /n̆g/</td>
+</tr>
+<tr>
+<td>c</td>
+<td>ච</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>ඡ</td>
+</tr>
+<tr>
+<td>j</td>
+<td>ජ</td>
+</tr>
+<tr>
+<td>jh</td>
+<td>ඣ</td>
+</tr>
+<tr>
+<td>ny</td>
+<td>ඤ</td>
+</tr>
+<tr>
+<td>xj</td>
+<td>ඦ</td>
+</tr>
+<tr>
+<td>y</td>
+<td>ය</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>ශ</td>
+</tr>
+<tr>
+<td>T</td>
+<td>ට</td>
+</tr>
+<tr>
+<td>Th</td>
+<td>ඨ</td>
+</tr>
+<tr>
+<td>D</td>
+<td>ඩ</td>
+</tr>
+<tr>
+<td>Dh</td>
+<td>ඪ</td>
+</tr>
+<tr>
+<td>N</td>
+<td>ණ</td>
+</tr>
+<tr>
+<td>xD</td>
+<td>ඬ</td>
+</tr>
+<tr>
+<td>r</td>
+<td>ර</td>
+</tr>
+<tr>
+<td>L</td>
+<td>ළ</td>
+</tr>
+<tr>
+<td>S</td>
+<td>ෂ</td>
+</tr>
+<tr>
+<td>t</td>
+<td>ත</td>
+</tr>
+<tr>
+<td>th</td>
+<td>ථ</td>
+</tr>
+<tr>
+<td>d</td>
+<td>ද</td>
+</tr>
+<tr>
+<td>dh</td>
+<td>ධ</td>
+</tr>
+<tr>
+<td>n</td>
+<td>න</td>
+</tr>
+<tr>
+<td>xd</td>
+<td>ඳ</td>
+</tr>
+<tr>
+<td>l</td>
+<td>ල</td>
+</tr>
+<tr>
+<td>s</td>
+<td>ස</td>
+</tr>
+<tr>
+<td>p</td>
+<td>ප</td>
+</tr>
+<tr>
+<td>ph</td>
+<td>ඵ</td>
+</tr>
+<tr>
+<td>b</td>
+<td>බ</td>
+</tr>
+<tr>
+<td>bh</td>
+<td>භ</td>
+</tr>
+<tr>
+<td>m</td>
+<td>ම</td>
+</tr>
+<tr>
+<td>xb</td>
+<td>ඹ</td>
+</tr>
+<tr>
+<td>v</td>
+<td>ව</td>
+</tr>
+<tr>
+<td>h</td>
+<td>හ</td>
+</tr>
+<tr>
+<td>f</td>
+<td>ෆ</td>
+</tr>
+<tr>
+<td>x</td>
+<td>/n̆-/</td>
+</tr>
+<tr>
+<td>qa</td>
+<td>අ</td>
+</tr>
+<tr>
+<td>qaa</td>
+<td>ආ</td>
+</tr>
+<tr>
+<td>qw</td>
+<td>ඇ /æ/</td>
+</tr>
+<tr>
+<td>qww</td>
+<td>ඈ /ǣ/</td>
+</tr>
+<tr>
+<td>qi</td>
+<td>ඉ</td>
+</tr>
+<tr>
+<td>qii</td>
+<td>ඊ</td>
+</tr>
+<tr>
+<td>qu</td>
+<td>උ</td>
+</tr>
+<tr>
+<td>quu</td>
+<td>ඌ</td>
+</tr>
+<tr>
+<td>qR</td>
+<td>ඍ</td>
+</tr>
+<tr>
+<td>qRR</td>
+<td>ඎ</td>
+</tr>
+<tr>
+<td>qe</td>
+<td>ඌ</td>
+</tr>
+<tr>
+<td>qee</td>
+<td>ඒ</td>
+</tr>
+<tr>
+<td>qo</td>
+<td>ඔ</td>
+</tr>
+<tr>
+<td>qoo</td>
+<td>ඕ</td>
+</tr>
+<tr>
+<td>qai</td>
+<td>ඓ</td>
+</tr>
+<tr>
+<td>qau</td>
+<td>ඖ</td>
+</tr>
+<tr>
+<td>qz</td>
+<td>ඏ /ḷ/</td>
+</tr>
+<tr>
+<td>qzz</td>
+<td>ඐ /ḹ/</td>
+</tr>
+<tr>
+<td>a</td>
+<td>character breaker</td>
+</tr>
+<tr>
+<td>aa</td>
+<td>ා</td>
+</tr>
+<tr>
+<td>w</td>
+<td>ැ  /æ/</td>
+</tr>
+<tr>
+<td>ww</td>
+<td>ෑ /ǣ/</td>
+</tr>
+<tr>
+<td>i</td>
+<td>ි</td>
+</tr>
+<tr>
+<td>ii</td>
+<td>ී</td>
+</tr>
+<tr>
+<td>u</td>
+<td>ු</td>
+</tr>
+<tr>
+<td>uu</td>
+<td>ූ</td>
+</tr>
+<tr>
+<td>R</td>
+<td>ෘ</td>
+</tr>
+<tr>
+<td>RR</td>
+<td>ෲ</td>
+</tr>
+<tr>
+<td>e</td>
+<td>ෙ</td>
+</tr>
+<tr>
+<td>ee</td>
+<td>ේ</td>
+</tr>
+<tr>
+<td>o</td>
+<td>ො</td>
+</tr>
+<tr>
+<td>oo</td>
+<td>ෝ</td>
+</tr>
+<tr>
+<td>ai</td>
+<td>ෛ</td>
+</tr>
+<tr>
+<td>au</td>
+<td>ෞ</td>
+</tr>
+<tr>
+<td>z</td>
+<td>ෟ /ḷ/</td>
+</tr>
+<tr>
+<td>zz</td>
+<td>ෳ /ḹ/</td>
+</tr>
+<tr>
+<td>M</td>
+<td>ං</td>
+</tr>
+<tr>
+<td>H</td>
+<td>ඃ</td>
+</tr>
+<tr>
+<td>q</td>
+<td>්</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>\u200d<br>(ZWJ)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</center>
+</td>
+</tr>
+</tbody>
+</table>
+	
+<br><p>Sample:<br><code>sh</code>, <code>sha</code> > ශ<br><code>sah</code>, <code>saha</code> > ස​හ<br><code>shqZrii lMkaa</code> > ශ්‍රී ලංකා</p>
+</center>  
+
+</body>
+</html>
