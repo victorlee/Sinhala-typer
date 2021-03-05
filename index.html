@@ -235,7 +235,17 @@ textarea {
 <button onclick="document.getElementById('input_textarea').value = ''">Clear</button>
 </th>
 <th>
-<button onclick="copytext()">Copy text</button>
+	<button onclick="copytext()">Copy text</button>
+	<button onclick="madura()">Madura</button>
+	<button onclick="deranda()">Deranda</button>
+	<script>
+		function madura() {
+  			window.open("https://www.maduraonline.com/?find=" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+		}
+		function deranda() {
+  			window.open("http://www.deranadictionary.com/?search=" + document.getElementById('output_textarea').value, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=0,left=300,width=600,height=600");
+		}
+	</script>
 </th>
 <th style="width:220px;">Conversion table</th>
 </tr>
@@ -256,7 +266,6 @@ oninput="onInputTextChange(this.value)" style="font-family: Arial;"></textarea>
 <td>
 <center>
 <div style="overflow-y: scroll; height:230px; width:200px; font-size: 19px;">
-
 <table>
 <thead>
 <tr>
