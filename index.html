@@ -208,6 +208,13 @@ textarea {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+#char {
+  width:12rem;
+  cursor:pointer;
+}
+#char tr:hover {
+  background-color: #eee;
+}
 </style>
 
 
@@ -599,7 +606,7 @@ oninput="onInputTextChange(this.value)" style="font-family: Arial;"></textarea>
 	
 <br>
 <p>click to copy: 
-	<table style="width:12rem"><tbody><tr><td onclick="copy(this)">ə</td><td onclick="copy(this)">æ</td><td onclick="copy(this)">ŋ</td><td onclick="copy(this)">n̆</td><td onclick="copy(this)">m̆</td><td onclick="copy(this)">ʈ</td><td onclick="copy(this)">ɖ</td><td onclick="copy(this)">ñ</td><td onclick="copy(this)">ḥ</td>
+	<table id="char"><tbody><tr><td onclick="copy(this)">ə</td><td onclick="copy(this)">æ</td><td onclick="copy(this)">ŋ</td><td onclick="copy(this)">n̆</td><td onclick="copy(this)">m̆</td><td onclick="copy(this)">ʈ</td><td onclick="copy(this)">ɖ</td><td onclick="copy(this)">ñ</td><td onclick="copy(this)">ḥ</td>
 		</tr></tbody></table></p>
 
 <p>Sample:<br><code>sh</code>, <code>sha</code> > ශ<br><code>sah</code>, <code>saha</code> > ස​හ<br><code>shqZrii lMkaa</code> > ශ්‍රී ලංකා</p>
