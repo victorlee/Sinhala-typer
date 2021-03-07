@@ -1,3 +1,3 @@
 # Lessons
 
-[1][1.html]
+[1](1.html)
