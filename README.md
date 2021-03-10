@@ -5,3 +5,5 @@
 [Sinhala to Latin converter](sinhala-to-latin.html)
 
 [lessons](lessons)
+
+[Alphabets](alphabets.html)
