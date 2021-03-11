@@ -4,6 +4,6 @@
 
 [Sinhala to Latin converter](sinhala-to-latin.html)
 
-[lessons](lessons)
-
 [Alphabets](alphabets.html)
+
+lessons [1](lessons/1.html) [2](lessons/2.html)
